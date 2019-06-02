@@ -21,13 +21,10 @@ export const mainRoute = (app: any, config: any, _middleware: any) => {
     res.render("index");
   });
 
-  app
-    .route(config.api_version + "/users")
-    .get(_getAllUsers)
-    .post(validateUser, _createUser);
+  app.route(config.api_version + "/upload").post(_createUser);
 
   app
-    .route(config.api_version + "/users/:user_id")
+    .route(config.api_version + "/getfilelink/:file_id")
     .get(_getUser)
     .delete(_deleteUser)
     .put(validateUser, _updateUser);
